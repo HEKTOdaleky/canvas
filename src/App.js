@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {SketchPicker} from "react-color";
 
-
 class App extends Component {
     state = {
         mouseDown: false,
@@ -46,15 +45,14 @@ class App extends Component {
     handleChangeComplete = (color) => {
         this.setState({rgb: color.rgb})
     };
+
     render() {
         return (
             <div style={{display: "flex", justifyContent: "space-between", padding: "0 40px 0 0"}}>
-
                 <canvas ref={elem => this.canvas = elem} style={{border: "3px solid black"}} width={1024} height={768}
                         onMouseDown={this.mouseDownHandler}
                         onMouseUp={this.mouseUpHandler}
                         onMouseMove={this.canvasMouseHandler}>
-
                 </canvas>
                 <div><SketchPicker color={this.state.rgb} onChangeComplete={this.handleChangeComplete}/></div>
             </div>
