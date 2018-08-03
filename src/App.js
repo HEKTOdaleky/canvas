@@ -6,7 +6,7 @@ class App extends Component {
     state = {
         mouseDown: false,
         pixelArray: [],
-        rgb: {r: 0, g: 0, b: 0, a: 255},
+        rgb: {r: 0, g: 0, b: 0, a: 0},
         events: []
     };
     canvasMouseHandler = event => {
@@ -29,7 +29,7 @@ class App extends Component {
     drawImage = (eventArray) => {
         const context = this.canvas.getContext('2d');
         eventArray.forEach(one => {
-            const color = `rgba(${one.color.r},${one.color.g},${one.color.b},255)`
+            const color = `rgba(${one.color.r},${one.color.g},${one.color.b},${one.color.a})`
             context.fillStyle = color;
             context.beginPath();
             context.arc(one.x, one.y, 10, 0, 2 * Math.PI);
@@ -48,7 +48,7 @@ class App extends Component {
     };
     render() {
         return (
-            <div style={{display:"flex",justifyContent:"space-between", padding:"0 40px 0 0"}}>
+            <div style={{display: "flex", justifyContent: "space-between", padding: "0 40px 0 0"}}>
 
                 <canvas ref={elem => this.canvas = elem} style={{border: "3px solid black"}} width={1024} height={768}
                         onMouseDown={this.mouseDownHandler}
